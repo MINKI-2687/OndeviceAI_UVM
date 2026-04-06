@@ -1,0 +1,8 @@
+simSetSimulator "-vcssv" -exec "./simv" -args
+debImport "-dbdir" "./simv.daidir/"
+debLoadSimResult /home/hedu04/KMK/0402_adder/wave.fsdb
+wvCreateWindow
+verdiSetActWin -win $_nWave2
+verdiWindowResize -win $_Verdi_1 "238" "449" "900" "700"
+verdiSetActWin -dock widgetDock_MTB_SOURCE_TAB_1
+debExit
