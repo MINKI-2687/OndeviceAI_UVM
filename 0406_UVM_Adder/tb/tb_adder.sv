@@ -13,13 +13,14 @@ class adder_seq_item extends uvm_sequence_item;
     logic      [8:0] y;
 
     function new(string name = "ADDER_SEQ_ITEM");
-        super.new(name); endfunction
+        super.new(name);
+    endfunction
 
-        `uvm_object_utils_begin(adder_seq_item)
-        `uvm_field_int(a, UVM_DEFAULT)
-        `uvm_field_int(b, UVM_DEFAULT)
-        `uvm_field_int(y, UVM_DEFAULT)
-        `uvm_object_utils_end
+    `uvm_object_utils_begin(adder_seq_item)
+    `uvm_field_int(a, UVM_DEFAULT)
+    `uvm_field_int(b, UVM_DEFAULT)
+    `uvm_field_int(y, UVM_DEFAULT)
+    `uvm_object_utils_end
 endclass
 
 class adder_sequence extends uvm_sequence;
