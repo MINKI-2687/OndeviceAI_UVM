@@ -22,5 +22,5 @@ sim: compile
 	@echo "target [$@] completed"
 
 clean:
-	rm -rf simv* csrc *.key *.h 
+	rm -rf simv* csrc *.key *.h *.log 
 	@echo "cleaning...."
