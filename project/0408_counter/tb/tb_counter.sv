@@ -184,7 +184,7 @@ class counter_monitor extends uvm_monitor;
             item.rst_n  = c_if.mon_cb.rst_n;
             item.enable = c_if.mon_cb.enable;
             item.count  = c_if.mon_cb.count;
-            `uvm_info(get_type_name(), item.convert2string(), UVM_MEDIUM);
+            `uvm_info(get_type_name(), item.convert2string(), UVM_MEDIUM)
             ap.write(item);
         end
     endtask
@@ -246,7 +246,6 @@ class counter_scoreboard extends uvm_scoreboard;
     logic [3:0] exp_cnt;
     int         error_cnt;
     int         match_cnt;
-    //bit         first_transaction;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -254,7 +253,6 @@ class counter_scoreboard extends uvm_scoreboard;
         // exp_cnt           = 0;
         error_cnt         = 0;
         match_cnt         = 0;
-        //  first_transaction = 1;
     endfunction
 
     virtual function void build_phase(uvm_phase phase);
@@ -264,13 +262,6 @@ class counter_scoreboard extends uvm_scoreboard;
     virtual function void write(counter_seq_item item);
         `uvm_info(get_type_name(), $sformatf("Received: %s", item.convert2string()), UVM_MEDIUM)
         // verification logic
-
-        // if (first_transaction) begin
-        //     `uvm_info(get_type_name(),
-        //         $sformatf("Initial state: %s", item.convert2string()), UVM_MEDIUM)
-        //     first_transaction = 0;
-        //     return;
-        // end
         // 1. exp vs act comp (first comp)
         if (exp_cnt !== item.count) begin
             `uvm_error(get_type_name(),
