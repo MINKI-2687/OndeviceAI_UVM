@@ -27,6 +27,8 @@ novas_dump.log
 *.vdb
 urgReport/
 *.rpt
+vdCovLog/
+vdCov.conf
 
 # ==========================================
 # 4. OS & Editor Temp Files (리눅스/빔 에디터 임시 파일)
@@ -34,3 +36,9 @@ urgReport/
 *.swp
 *~
 .DS_Store
+
+# ==========================================
+# 5. Generated XMLs & Caches (Verdi 캐시 및 파생 파일)
+# ==========================================
+*.xml
+.fsm.sch.verilog.xml
