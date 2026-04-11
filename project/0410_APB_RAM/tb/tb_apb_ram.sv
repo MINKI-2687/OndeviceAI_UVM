@@ -1,40 +1,52 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
-`include "ram_if.sv"
-`include "ram_seq_item.sv"
-`include "ram_sequence.sv"
-`include "ram_driver.sv"
-`include "ram_monitor.sv"
-`include "ram_agent.sv"
-`include "ram_scoreboard.sv"
-`include "ram_coverage.sv"
-`include "ram_env.sv"
-`include "ram_test.sv"
+`include "apb_ram_if.sv"
+`include "apb_ram_seq_item.sv"
+`include "apb_ram_sequence.sv"
+`include "apb_ram_driver.sv"
+`include "apb_ram_monitor.sv"
+`include "apb_ram_agent.sv"
+`include "apb_ram_scoreboard.sv"
+`include "apb_ram_coverage.sv"
+`include "apb_ram_env.sv"
+`include "apb_ram_test.sv"
 
-module tb_ram ();
-    logic clk;
+module tb_apb ();
+    logic pclk;
+    logic presetn;
 
-    initial clk   = 0;
-    always #5 clk = ~clk;
+    always #5 pclk = ~pclk;
 
-    ram_if r_if(clk);
+    apb_if vif(pclk, presetn);
 
-    ram dut(
-        .clk  (clk),
-        .wr   (r_if.wr),
-        .addr (r_if.addr),
-        .wdata(r_if.wdata),
-        .rdata(r_if.rdata)
+    apb_ram dut(
+        .PCLK   (pclk),
+        .PRESET (presetn),
+        // APB Interface signals
+        .PADDR  (vif.paddr),
+        .PWRITE (vif.pwrite),
+        .PENABLE(vif.penable),
+        .PSEL   (vif.psel),
+        .PWDATA (vif.pwdata),
+        .PRDATA (vif.prdata),
+        .PREADY (vif.pready)
     );
 
     initial begin
-        uvm_config_db#(virtual ram_if)::set(null, "*", "r_if", r_if);
+        pclk    = 0;
+        presetn = 0;
+        repeat(5) @(posedge pclk);
+        presetn = 1;
+    end
+        
+    initial begin
+        uvm_config_db#(virtual apb_if)::set(null, "*", "vif", vif);
         run_test();
     end
 
     initial begin
         $fsdbDumpfile("novas.fsdb");
-        $fsdbDumpvars(0, tb_ram, "+all");
+        $fsdbDumpvars(0, tb_apb, "+all");
     end
 endmodule

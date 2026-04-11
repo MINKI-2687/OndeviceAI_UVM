@@ -1,4 +1,4 @@
-TC ?= ram_base_test 
+TC ?= apb_base_test 
 SEED ?= 1234
 
 VCS_OPTS := -full64 -sverilog 
@@ -15,7 +15,7 @@ SIM_OPTS += -cm line+cond+fsm+tgl+branch+assert
 SIM_OPTS += -cm_dir coverage.vdb
 SIM_OPTS += -cm_name sim1
 
-VERDI_OPTS := -dbdir simv.daidir -ssf novas.fsdb
+VERDI_OPTS := -cov -covdir coverage.vdb -dbdir simv.daidir -ssf novas.fsdb
 
 .PHONY: compile sim clean
 
@@ -23,12 +23,17 @@ compile:
 	vcs $(VCS_OPTS) -f filelist.f -o simv 
 
 sim: compile
-#	./simv $(SIM_OPTS) +UVM_TESTNAME=ram_write_read_test
-	./simv $(SIM_OPTS) +UVM_TESTNAME=ram_random_test
-	#./simv $(SIM_OPTS) +UVM_TESTNAME=ram_full_sweep_test
+	#./simv $(SIM_OPTS) +UVM_TESTNAME=apb_write_read_test
+	./simv $(SIM_OPTS) +UVM_TESTNAME=apb_rand_test
 
-verdi:
-	verdi $(VERDI_OPTS)
+verdi: sim
+	verdi $(VERDI_OPTS) &
+
+vw: sim
+	verdi -dbdir simv.daidir -ssf novas.fsdb &
+
+vc: sim
+	verdi -cov -covdir coverage.vdb &
 
 clean:
 	rm -rf simv* csrc *.key *.h *.log *.fsdb novas* *.conf *Log

@@ -1,5 +1,5 @@
 # rtl
-./rtl/ram.sv
+./rtl/apb_ram.sv
 
 # tb
-./tb/tb_ram.sv
+./tb/tb_apb_ram.sv
