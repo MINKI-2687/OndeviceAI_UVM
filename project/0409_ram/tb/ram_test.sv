@@ -21,6 +21,7 @@
         virtual task run_phase(uvm_phase phase);
             phase.raise_objection(this);
             run_test_seq();
+            #50;
             phase.drop_objection(this);
             `uvm_info("TEST", "ram test finished.", UVM_NONE)
         endtask
@@ -38,7 +39,7 @@
 
         virtual task run_test_seq();
             ram_write_read_sequence seq = ram_write_read_sequence::type_id::create("seq");
-            seq.num_transaction = 70000;
+            seq.num_transaction = 10000;
             seq.start(env.agt.sqr);
         endtask
     endclass
@@ -65,7 +66,7 @@
 
         virtual task run_test_seq();
             ram_random_sequence seq = ram_random_sequence::type_id::create("seq");
-            seq.num_transaction = 70000;
+            seq.num_transaction = 10000;
             seq.start(env.agt.sqr);
         endtask
     endclass

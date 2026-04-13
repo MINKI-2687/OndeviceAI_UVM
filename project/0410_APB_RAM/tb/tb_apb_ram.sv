@@ -12,13 +12,13 @@ import uvm_pkg::*;
 `include "apb_ram_env.sv"
 `include "apb_ram_test.sv"
 
-module tb_apb ();
+module tb_apb_ram ();
     logic pclk;
     logic presetn;
 
     always #5 pclk = ~pclk;
 
-    apb_if vif(pclk, presetn);
+    apb_if vif(.pclk(pclk), .presetn(presetn));
 
     apb_ram dut(
         .PCLK   (pclk),
@@ -39,7 +39,7 @@ module tb_apb ();
         repeat(5) @(posedge pclk);
         presetn = 1;
     end
-        
+
     initial begin
         uvm_config_db#(virtual apb_if)::set(null, "*", "vif", vif);
         run_test();
@@ -47,6 +47,6 @@ module tb_apb ();
 
     initial begin
         $fsdbDumpfile("novas.fsdb");
-        $fsdbDumpvars(0, tb_apb, "+all");
+        $fsdbDumpvars(0, tb_apb_ram, "+all");
     end
 endmodule

@@ -10,9 +10,9 @@
     class ram_env extends uvm_env;
         `uvm_component_utils(ram_env)
 
-        ram_agent agt;
+        ram_agent      agt;
         ram_scoreboard scb;
-        ram_coverage cov;
+        ram_coverage   cov;
 
         function new(string name, uvm_component parent);
             super.new(name, parent);

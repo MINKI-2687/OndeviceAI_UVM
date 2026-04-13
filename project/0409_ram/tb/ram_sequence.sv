@@ -57,21 +57,23 @@
         endfunction
 
         virtual task body();
-                ram_seq_item item = ram_seq_item::type_id::create("item");
+            ram_seq_item item;
 
+            for (int i = 0; i<2**8; i++) begin
+                item = ram_seq_item::type_id::create("item");
                 start_item(item); // wait driver signal
-                for (int i = 0; i<2**8; i++) begin
-                    if (!item.randomize() with {wr == 1; addr == i;})
-                        `uvm_fatal(get_type_name(), "Randomization Fail!")
-                end
+                if (!item.randomize() with {wr == 1; addr == i;})
+                    `uvm_fatal(get_type_name(), "Randomization Fail!")
                 finish_item(item); // send item driver
+            end
 
+            for (int i = 0; i<2**8; i++) begin
+                item = ram_seq_item::type_id::create("item");
                 start_item(item); // wait driver signal
                 item.wr = 0;
-                for (int i = 0; i<2**8; i++) begin
-                    item.addr = i;
-                end
+                item.addr = i;
                 finish_item(item); // send item driver
+            end
         endtask
     endclass
 `endif
