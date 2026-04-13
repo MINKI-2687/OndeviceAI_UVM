@@ -10,11 +10,17 @@
         rand logic [15:0] wdata;
         logic      [15:0] rdata;
 
-       // constraint c_addr {addr inside {[8'h00:8'h0f]};}
-        constraint c_wdata {wdata dist {
+        // constraint addr_c {addr inside {[8'h00:8'h0f]};}
+
+        constraint wdata_c {wdata dist {
             16'h0000 := 10,
             16'hffff := 10,
             [16'h0001:16'hfffe] :/ 80};}
+
+        constraint addr_c {addr dist {
+            8'h00 := 10,
+            8'hff := 10,
+            [8'h01:8'hfe] :/ 80};}
 
         `uvm_object_utils_begin(ram_seq_item)
         `uvm_field_int(wr, UVM_ALL_ON)

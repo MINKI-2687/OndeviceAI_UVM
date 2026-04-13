@@ -1,0 +1,35 @@
+{
+    "GUI": {
+        "node_name_mode": 1,
+        "default_node_name": "<add_node_name>",
+        "node_size_unlimited": true,
+        "port_size": 50,
+        "pipe_style": 2,
+        "pipe_width": 10,
+        "white_background": true,
+        "main_window_size": [
+            1046,
+            748
+        ],
+        "state": "AAAA/wAAAAD9AAAAAgAAAAAAAAKDAAACsfwCAAAAAfwAAAA7AAACsQAAAKQA/////AEAAAAC/AAAAAAAAADZAAAAewD////6AAAAAAEAAAAD+wAAABYATABpAGIAcgBhAHIAeQBWAGkAZQB3AQAAAAD/////AAAAWAD////7AAAAFgBTAGUAcwBzAGkAbwBuAFYAaQBlAHcAAAAAAP////8AAABYAP////sAAAAQAEYAaQBsAGUAVgBpAGUAdwEAAAAA/////wAAAFgA/////AAAAOEAAAGiAAAAewD////8AgAAAAL8AAAAOwAAArEAAACKAQAAGvoAAAAAAgAAAAL7AAAAHgBkAG8AYwBrAFcAaQBkAGcAZQB0AF8AdAByAGUAZQEAAAAA/////wAAAG8A////+wAAACoAZABvAGMAawBXAGkAZABnAGUAdABfAG4AYQB2AGkAZwBhAHQAaQBvAG4BAAAAAP////8AAABdAP////sAAAAkAGQAbwBjAGsAVwBpAGQAZwBlAHQAXwBjAG8AbgBzAG8AbABlAAAAAooAAAFJAAAAuQD///8AAAABAAABiwAAArH8AgAAAAP7AAAAIgBkAG8AYwBrAFcAaQBkAGcAZQB0AF8AZwBsAG8AYgBhAGwBAAAAOwAAAN4AAADeAP////sAAAAiAGQAbwBjAGsAVwBpAGQAZwBlAHQAXwBjAG8AbgBmAGkAZwEAAAEhAAAArgAAAK4A/////AAAAdcAAAEVAAABFQEAABr6AAAAAAIAAAAC+wAAACIAZABvAGMAawBXAGkAZABnAGUAdABfAHMAZQBsAGUAYwB0AQAAAAD/////AAAA+gD////7AAAANABkAG8AYwBrAFcAaQBkAGcAZQB0AF8AbgBhAHYAaQBnAGEAdABlAF8AcwBlAGwAZQBjAHQBAAAAAP////8AAAD6AP///wAAAAAAAAKxAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAHQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAA==",
+        "open_session_in_same_ddt": true,
+        "recent_files": []
+    },
+    "BUILD": {
+        "DDT_WORK_ROOT": null,
+        "parent_var_name": "B",
+        "record_step": "ddt_history.log",
+        "library": [],
+        "library_path": "",
+        "use_config_lib_path": true,
+        "file_rename_mode": 2
+    },
+    "RUNTIME": {
+        "summary_filename": "summary.log",
+        "report_filename": "report.log",
+        "simplify_string": 0,
+        "throw_exception": false,
+        "verbose": false,
+        "list_all": true
+    }
+}
